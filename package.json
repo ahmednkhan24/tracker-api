@@ -1,0 +1,22 @@
+{
+  "name": "prayer-tracker-api",
+  "version": "1.0.0",
+  "description": "Prayer Tracker Api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmednkhan24/Prayer-Tracker-Api.git"
+  },
+  "author": "Ahmed Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmednkhan24/Prayer-Tracker-Api/issues"
+  },
+  "homepage": "https://github.com/ahmednkhan24/Prayer-Tracker-Api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
