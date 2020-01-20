@@ -1,5 +1,15 @@
-var express = require('express');
+var express  = require('express'),
+    mongoose = require('mongoose');
+
 var app = express();
+
+// database connection
+var mongoose_attr = { 
+    useUnifiedTopology: true, 
+    useNewUrlParser: true 
+}; 
+var databaseName = 'prayer_tracker';
+mongoose.connect('mongodb://localhost/' + databaseName, mongoose_attr);
 
 app.get('/', (req, res) => {
     res.json({ username: 'hello world' });
@@ -14,3 +24,5 @@ var server = app.listen(PORT, IP, function(){
     var port = server.address().port;
     console.log('running at http://' + host + ':' + port)
 });
+
+// mongod --dbpath=/Users/data/db
