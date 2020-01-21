@@ -1,0 +1,29 @@
+User {
+    id: 12345,
+    first_name: 'Ahmed',
+    last_name: 'Khan',
+    prayers: {
+        2020: {
+            Janurary: [
+                [
+                    false, false, false, false, false
+                ], [], [], [], [],
+                [], [], [], [], [],
+                [], [], [], [], [],
+                [], [], [], [], [],
+                [], [], [], [], [], []
+            ],
+            February: [],
+            March: [],
+            April: [],
+            May: [],
+            June: [],
+            July: [],
+            August: [],
+            September: [],
+            October: [],
+            November: [],
+            December: []
+        }
+    }
+}
