@@ -18,7 +18,7 @@ let mongoose_attr = {
     useUnifiedTopology: true, 
     useNewUrlParser: true 
 }; 
-let databaseName = 'prayer_tracker';
+let databaseName = 'pt_userService';
 mongoose.connect('mongodb://localhost/' + databaseName, mongoose_attr, (err) => {
     if (err) {
         console.log('error connecting to the database');
@@ -62,4 +62,9 @@ var server = app.listen(PORT, IP, () => {
  * use prayer_tracker
  * show collections
  * db.users.find()
+ * 
+ * 
+ * dotenv - https://dev.to/getd/how-to-manage-secrets-and-configs-using-dotenv-in-node-js-and-docker-2214
+ * 
+ * docker - https://itnext.io/lets-dockerize-a-nodejs-express-api-22700b4105e4
  */
