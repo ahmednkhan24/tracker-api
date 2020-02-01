@@ -34,7 +34,7 @@ router.get('/users', (req, res) => {
 });
 
 // find a user
-router.get('/users/:id', (req, res) => {
+router.get('/user/:id', (req, res) => {
     User.find({"firstName": req.params.id}, (err, data) => {
         if (err) {
             console.log(err);
@@ -46,7 +46,7 @@ router.get('/users/:id', (req, res) => {
 });
 
 // create new user
-router.post('/users', (req, res) => {
+router.post('/user', (req, res) => {
     const firstName = req.sanitize(req.body.firstName);
     const lastName = req.sanitize(req.body.lastName);
     const email = req.sanitize(req.body.email);
@@ -65,6 +65,10 @@ router.post('/users', (req, res) => {
     //         response.redirect("/campgrounds");
     //     }
     // });
+});
+
+router.get('*', (req, res) => {
+    res.json( { 404: 'Not Found' });
 });
 
 module.exports = router;

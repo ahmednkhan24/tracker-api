@@ -8,6 +8,11 @@ var express    = require('express'),
 // init
 var app = express();
 
+// fix mongoose depracted warnings
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 // database connection
 let mongoose_attr = { 
     useUnifiedTopology: true, 
@@ -49,4 +54,12 @@ var server = app.listen(PORT, IP, () => {
  * kill -9 <PID> 
  * 
  * node app.js
+ * npm run dev
+ * npm run start
+ * 
+ * mongo
+ * show dbs
+ * use prayer_tracker
+ * show collections
+ * db.users.find()
  */
