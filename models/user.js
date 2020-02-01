@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 
 // schema setup
 var userSchema = new mongoose.Schema({
@@ -18,6 +18,6 @@ var userSchema = new mongoose.Schema({
 });
 
 // compile the schema into a model
-var userModel = mongoose.model("User", userSchema);
+var userModel = mongoose.model('User', userSchema);
 
 module.exports = userModel;
