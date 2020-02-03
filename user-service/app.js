@@ -18,7 +18,8 @@ let mongoose_attr = {
     useUnifiedTopology: true, 
     useNewUrlParser: true 
 }; 
-let databaseName = 'pt_userService';
+//let databaseName = 'pt_userService';
+let databaseName = 'prayer_tracker';
 mongoose.connect('mongodb://localhost/' + databaseName, mongoose_attr, (err) => {
     if (err) {
         console.log('error connecting to the database');
