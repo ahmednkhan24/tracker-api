@@ -47,24 +47,30 @@ router.get('/user/:id', (req, res) => {
 
 // create new user
 router.post('/user', (req, res) => {
-    const firstName = req.sanitize(req.body.firstName);
-    const lastName = req.sanitize(req.body.lastName);
-    const email = req.sanitize(req.body.email);
+    const first_name = req.sanitize(req.body.first_name);
+    const last_name = req.sanitize(req.body.last_name);
+    const email_address = req.sanitize(req.body.email_address);
 
-    res.json({ body: [firstName, lastName, email] });
+    //res.json({ body: [firstName, lastName, email] });
 
+    const newUser = {
+        firstName: first_name,
+        lastName: last_name,
+        email: email_address
+    };
 
-    // // add the new campground to the database
-    // CampgroundDatabase.create(newCampground, function(err, newlyCreated){
-    //     if (err) {
-    //         request.flash("error", "Something went wrong");
-    //         response.redirect("back");
-    //     }
-    //     else {
-    //         // redirect to campgrounds page
-    //         response.redirect("/campgrounds");
-    //     }
-    // });
+    User.create(newUser, (err, newlyCreatedUser) => {
+        if (err) {
+            console.log('error creating the user :(');
+            console.log(err);
+            res.json( { error: 'there was an error' });
+        }
+        else {
+            console.log('CREATED THE USER! :)');
+            console.log(newlyCreatedUser);
+            res.json( { createdUser: newlyCreatedUser });
+        }
+    });
 });
 
 router.get('*', (req, res) => {
