@@ -3,7 +3,7 @@ var express    = require('express'),
     cors       = require('cors'),
     sanitizer  = require('express-sanitizer'),
     bodyParser = require('body-parser'),
-    routes     = require('./routes');
+    routes     = require('./src/routes');
 
 // init
 var app = express();
