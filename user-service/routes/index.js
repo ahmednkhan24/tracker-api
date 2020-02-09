@@ -1,6 +1,7 @@
 var express  = require("express"),
     router   = express.Router(),
-    User     = require("../models/user");
+    User     = require("../models/user"),
+    utils    = require('../utils/utils');
 
 // test root route
 router.get('/', (req, res) => {
@@ -33,7 +34,33 @@ router.get('/users', (req, res) => {
     });
 });
 
-// find a user
+// let doesQueryParamExist = param => {
+
+// }
+
+router.get('/user', (req, res) => {
+
+    if (utils.doesQueryParamExist(req.query.email_address)) {
+        res.json( { error: 'there was an error' });
+    }
+    else {
+        res.json({ nice: 'hi'});
+    }
+
+    // if (utils.isObjectEmpty(req.query)) {
+    //     res.json( { error: 'there was an error' });
+    // }
+
+
+
+    // if(!req.query.email_address) {
+    //     res.json( { error: 'there was an error' });
+    // }
+    // const parameter = req.body.email_address;
+    // console.log(parameter);
+});
+
+// find a user by first name
 router.get('/user/:id', (req, res) => {
     User.find({"firstName": req.params.id}, (err, data) => {
         if (err) {
@@ -50,8 +77,6 @@ router.post('/user', (req, res) => {
     const first_name = req.sanitize(req.body.first_name);
     const last_name = req.sanitize(req.body.last_name);
     const email_address = req.sanitize(req.body.email_address);
-
-    //res.json({ body: [firstName, lastName, email] });
 
     const newUser = {
         firstName: first_name,
