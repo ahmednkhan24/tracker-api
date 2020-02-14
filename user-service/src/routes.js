@@ -13,7 +13,7 @@ router.get(constants.ROOT, (req, res) => {
 router.get(constants.ALL_USERS, (req, res) => {
     User.find({}, (err, allUsers) => {
         if (err) {
-            console.log('error finding all users in the database');
+            res.json({ error: 'there was an error' });
         }
         res.json({ allUsers: allUsers });
     });
@@ -26,7 +26,7 @@ router.get(constants.USER, (req, res) => {
     else {
         User.find({ "email": req.query.email_address }, (err, data) => {
             if (err) {
-                console.log(`error finding the user with email: ${req.query.email_address} in the database`);
+                res.json({ error: 'there was an error' });
             }
             res.json({foundUser: data});
         });
@@ -47,14 +47,10 @@ router.post(constants.USER, (req, res) => {
 
     User.create(newUser, (err, newlyCreatedUser) => {
         if (err) {
-            console.log('error creating the user :(');
-            console.log(err);
-            res.json( { error: 'there was an error' });
+            res.json({ error: 'there was an error' });
         }
         else {
-            console.log('CREATED THE USER! :)');
-            console.log(newlyCreatedUser);
-            res.json( { createdUser: newlyCreatedUser });
+            res.json({ createdUser: newlyCreatedUser });
         }
     });
 });
@@ -67,12 +63,12 @@ router.get('/user/:id', (req, res) => {
         }
 
         console.log(data);
-        res.json({foundUser: data});
+        res.json({ foundUser: data });
     });
 });
 
 router.get('*', (req, res) => {
-    res.json( { 404: 'Not Found' });
+    res.json({ 404: 'Not Found' });
 });
 
 module.exports = router;
