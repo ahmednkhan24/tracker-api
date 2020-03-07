@@ -5,12 +5,12 @@ var express  = require("express"),
     constants = require('./constants');
 
 // root route
-router.get(constants.ROOT, (req, res) => {
+router.get('/', (req, res) => {
     res.json({ username: 'hello world' });
 });
 
 // return all users
-router.get(constants.ALL_USERS, (req, res) => {
+router.get('/users', (req, res) => {
     User.find({}, (err, allUsers) => {
         if (err) {
             res.json({ error: 'there was an error' });
@@ -19,7 +19,7 @@ router.get(constants.ALL_USERS, (req, res) => {
     });
 });
 
-router.get(constants.USER, (req, res) => {
+router.get('/user', (req, res) => {
     if (utils.isObjectEmpty(req.query) || !req.query.email_address) {
         res.json( { error: 'there was an error' });
     }
@@ -34,7 +34,7 @@ router.get(constants.USER, (req, res) => {
 });
 
 // create new user
-router.post(constants.USER, (req, res) => {
+router.post('/user', (req, res) => {
     const first_name    = req.sanitize(req.body.first_name);
     const last_name     = req.sanitize(req.body.last_name);
     const email_address = req.sanitize(req.body.email_address);
