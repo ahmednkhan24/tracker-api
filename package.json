@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "babel-node app.js",
+    "dev": "nodemon --exec babel-node app.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,10 @@
     "mongoose": "^5.8.9"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "nodemon": "^2.0.2"
   }
 }
