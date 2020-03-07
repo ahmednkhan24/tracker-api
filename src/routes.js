@@ -1,8 +1,7 @@
 var express  = require("express"),
     router   = express.Router(),
     User     = require("./user"),
-    utils    = require('./utils'),
-    constants = require('./constants');
+    utils    = require('./utils');
 
 // root route
 router.get('/', (req, res) => {
