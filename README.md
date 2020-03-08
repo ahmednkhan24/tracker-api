@@ -13,4 +13,25 @@ TODO:
 * update readme with better explanations and formatting + mongodb
 * update app to be in src folder + run commands
 * add unit tests
-* 
+
+
+/*
+ * mongod --dbpath=/Users/data/db
+ * sudo lsof -i tcp:3000 
+ * kill -9 <PID> 
+ * 
+ * node app.js
+ * npm run dev
+ * npm run start
+ * 
+ * mongo
+ * show dbs
+ * use prayer_tracker
+ * show collections
+ * db.users.find()
+ * 
+ * 
+ * dotenv - https://dev.to/getd/how-to-manage-secrets-and-configs-using-dotenv-in-node-js-and-docker-2214
+ * 
+ * docker - https://itnext.io/lets-dockerize-a-nodejs-express-api-22700b4105e4
+ */
