@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import sanitizer from 'express-sanitizer';
 import bodyParser from 'body-parser';
-import controller from './routes';
+import controller from './controller';
 
 // init
 const app = express();
