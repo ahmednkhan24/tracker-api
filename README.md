@@ -13,6 +13,8 @@ TODO:
 * update readme with better explanations and formatting + mongodb
 * update app to be in src folder + run commands
 * add unit tests
+* CI/CD
+* dockerize
 
 
 /*
