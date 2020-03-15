@@ -9,7 +9,7 @@ import connectToDatabase from './database';
 import startServer from './server';
 
 // load environment variables
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: '.env' });
 
 // init
 const app = express();
