@@ -55,4 +55,4 @@ router.get('*', (req, res) => {
   res.json(getErrorMessage(404));
 });
 
-module.exports = router;
+export default router;
