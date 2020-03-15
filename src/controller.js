@@ -7,24 +7,22 @@ const router = express.Router();
 
 const errorMessage = { error: 'there was an error' };
 
-// root route
 router.get('/', (req, res) => {
-  res.json({ username: 'hello world' });
+  res.status(200).json({ username: 'hello world' });
 });
 
-// return all users
 router.get('/users', async (req, res) => {
-  const value = await service.findAllUsers();
-  res.json(value);
+  const allUsers = await service.findAllUsers();
+  return res.status(allUsers.error ? 404 : 200).json(allUsers);
 });
 
 router.get('/user', async (req, res) => {
   if (utils.isObjectEmpty(req.query) || !req.query.email_address) {
-    res.json(errorMessage);
+    res.status(400).json(errorMessage);
   }
-  const emailAddress = req.sanitize(req.body.email_address);
-  const value = await service.findUser(emailAddress);
-  res.json(value);
+  const email = req.sanitize(req.body.email);
+  const user = await service.findUser(email);
+  res.json(user);
   // if (utils.isObjectEmpty(req.query) || !req.query.email_address) {
   //     res.json( { error: 'there was an error' });
   // }

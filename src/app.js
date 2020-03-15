@@ -40,6 +40,8 @@ app.use(sanitizer());
 // use our defined routes
 app.use(controller);
 
+app.disable('etag');
+
 const PORT = process.env.PORT || 3000;
 const IP = process.env.IP || '127.0.0.1';
 const server = app.listen(PORT, IP, () => {
