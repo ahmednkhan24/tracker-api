@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-import controller from './controller';
+import controller from './routes/controller';
 import connectToDatabase from './database';
 import startServer from './server';
 

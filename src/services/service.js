@@ -1,5 +1,5 @@
-import User from './user';
-import getErrorMessage from './errorMessages';
+import User from '../models/user';
+import getErrorMessage from '../responses/errorMessages';
 
 export const findAllUsers = async () => User.find({});
 

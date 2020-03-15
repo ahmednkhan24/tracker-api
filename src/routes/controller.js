@@ -1,8 +1,8 @@
 import express from 'express';
-import User from './user';
-import getErrorMessage from './errorMessages';
-import { findUser, findAllUsers, createUser } from './service';
-import { isObjectEmpty, missingKeyInObject } from './utils';
+import User from '../models/user';
+import getErrorMessage from '../responses/errorMessages';
+import { findUser, findAllUsers, createUser } from '../services/service';
+import { isObjectEmpty, missingKeyInObject } from '../utils';
 
 const router = express.Router();
 
