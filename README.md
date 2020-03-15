@@ -15,6 +15,7 @@ TODO:
 * add unit tests
 * CI/CD
 * dockerize
+* swagger
 
 
 /*
