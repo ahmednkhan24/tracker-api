@@ -1,63 +1,43 @@
 import express from 'express';
-import service from './service';
 import User from './user';
-import utils from './utils';
+import getErrorMessage from './errorMessages';
+import { findUser, findAllUsers, createUser } from './service';
+import { isObjectEmpty, missingKeyInObject } from './utils';
 
 const router = express.Router();
 
-const errorMessage = { error: 'there was an error' };
-
 router.get('/', (req, res) => {
-  res.status(200).json({ username: 'hello world' });
+  res.status(200).json({ hello: 'world' });
 });
 
 router.get('/users', async (req, res) => {
-  const allUsers = await service.findAllUsers();
-  return res.status(allUsers.error ? 404 : 200).json(allUsers);
+  const allUsers = await findAllUsers();
+  if (isObjectEmpty(allUsers)) {
+    res.status(404).json(getErrorMessage(404));
+  }
+  res.status(200).json(allUsers);
 });
 
 router.get('/user', async (req, res) => {
-  if (utils.isObjectEmpty(req.query) || !req.query.email_address) {
-    res.status(400).json(errorMessage);
+  if (isObjectEmpty(req.query) || missingKeyInObject(req.query, ['emailAddress'])) {
+    res.status(400).json(getErrorMessage(400));
+  } else {
+    const emailAddress = req.sanitize(req.query.emailAddress);
+    const user = await findUser(emailAddress);
+    res.status(200).json(user);
   }
-  const email = req.sanitize(req.body.email);
-  const user = await service.findUser(email);
-  res.json(user);
-  // if (utils.isObjectEmpty(req.query) || !req.query.email_address) {
-  //     res.json( { error: 'there was an error' });
-  // }
-  // else {
-  //     User.find({ "email": req.query.email_address }, (err, data) => {
-  //         if (err) {
-  //             res.json({ error: 'there was an error' });
-  //         }
-  //         res.json({foundUser: data});
-  //     });
-  // }
 });
 
-// create new user
-router.post('/user', (req, res) => {
-  const firstName = req.sanitize(req.body.first_name);
-  const lastName = req.sanitize(req.body.last_name);
-  const emailAddress = req.sanitize(req.body.email_address);
-
-  // TODO: fix
-  const newUser = {
-    // eslint-disable-next-line object-shorthand
-    firstName: firstName,
-    // eslint-disable-next-line object-shorthand
-    lastName: lastName,
-    email: emailAddress,
-  };
-
-  User.create(newUser, (err, newlyCreatedUser) => {
-    if (err) {
-      res.json({ error: 'there was an error' });
-    } else {
-      res.json({ createdUser: newlyCreatedUser });
-    }
-  });
+router.post('/user', async (req, res) => {
+  if (isObjectEmpty(req.body) || missingKeyInObject(req.body, ['firstName', 'lastName', 'emailAddress'])) {
+    res.status(400).json(getErrorMessage(400));
+  } else {
+    const firstName = req.sanitize(req.body.firstName);
+    const lastName = req.sanitize(req.body.lastName);
+    const emailAddress = req.sanitize(req.body.emailAddress);
+    const user = await createUser({ firstName, lastName, emailAddress });
+    res.status(user.errorCode ? user.status : 200).json(user);
+  }
 });
 
 // find a user by first name
@@ -72,7 +52,7 @@ router.get('/user/:id', (req, res) => {
 });
 
 router.get('*', (req, res) => {
-  res.json({ 404: 'Not Found' });
+  res.json(getErrorMessage(404));
 });
 
 module.exports = router;

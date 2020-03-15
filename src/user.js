@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  email: {
+  emailAddress: {
     type: String,
     required: true,
     unique: true,
@@ -20,4 +20,4 @@ const userSchema = new mongoose.Schema({
 // compile the schema into a model
 const userModel = mongoose.model('User', userSchema);
 
-module.exports = userModel;
+export default userModel;
