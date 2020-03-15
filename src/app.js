@@ -23,7 +23,8 @@ const databaseName = 'prayer_tracker';
 mongoose.connect(`mongodb://localhost/${databaseName}`, mongooseAttr, (err) => {
   if (err) {
     console.log('error connecting to the database');
-    console.log(err);
+  } else {
+    console.log('connected to database');
   }
 });
 
