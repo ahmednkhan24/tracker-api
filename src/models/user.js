@@ -1,19 +1,25 @@
 import mongoose from 'mongoose';
 
-// schema setup
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true,
+    trim: true,
+    required: [true, 'First Name Required'],
   },
   lastName: {
     type: String,
-    required: true,
+    trim: true,
+    required: [true, 'Last Name Required'],
   },
   emailAddress: {
     type: String,
-    required: true,
+    trim: true,
     unique: true,
+    required: [true, 'Email Address Required'],
+  },
+  timeCreated: {
+    type: Date,
+    default: Date.now,
   },
 });
 
