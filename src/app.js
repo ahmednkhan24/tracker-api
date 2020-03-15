@@ -8,18 +8,15 @@ import controller from './controller';
 // init
 const app = express();
 
-// fix mongoose depracted warnings
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-
 // database connection
 const mongooseAttr = {
+  useFindAndModify: true,
+  useCreateIndex: true,
   useUnifiedTopology: true,
   useNewUrlParser: true,
 };
 
-const databaseName = 'prayer_tracker';
+const databaseName = 'tracker';
 mongoose.connect(`mongodb://localhost/${databaseName}`, mongooseAttr, (err) => {
   if (err) {
     console.log('error connecting to the database');
@@ -31,7 +28,7 @@ mongoose.connect(`mongodb://localhost/${databaseName}`, mongooseAttr, (err) => {
 // cross-origin resource sharing
 app.use(cors());
 
-// Configuring body parser middleware, allows us to use form data
+// Configuring body parser middleware, allows us to use form data and send responses as json
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -41,6 +38,7 @@ app.use(sanitizer());
 // use our defined routes
 app.use(controller);
 
+// remove etag's in order to manually configure HTTP response codes
 app.disable('etag');
 
 const PORT = process.env.PORT || 3000;
