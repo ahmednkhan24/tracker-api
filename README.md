@@ -36,4 +36,6 @@ TODO:
  * dotenv - https://dev.to/getd/how-to-manage-secrets-and-configs-using-dotenv-in-node-js-and-docker-2214
  * 
  * docker - https://itnext.io/lets-dockerize-a-nodejs-express-api-22700b4105e4
+ *
+ * http status codes: https://www.restapitutorial.com/httpstatuscodes.html
  */
