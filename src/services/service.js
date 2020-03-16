@@ -1,13 +1,13 @@
-import User from '../models/user';
+import UserModel from '../models/user';
 import getErrorMessage from '../responses/errorMessages';
 
-export const findAllUsers = async () => User.find({});
+export const findAllUsers = async () => UserModel.find({});
 
-export const findUser = async (emailAddress) => User.find({ emailAddress });
+export const findUser = async (emailAddress) => UserModel.find({ emailAddress });
 
 export const createUser = async (user) => {
   try {
-    return await User.create(user);
+    return await UserModel.create(user);
   } catch (err) {
     // duplicate
     if (err.name === 'MongoError' && err.code === 11000) {
