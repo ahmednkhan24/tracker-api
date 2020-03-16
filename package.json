@@ -4,9 +4,11 @@
   "description": "Tracker Api",
   "main": "server.js",
   "scripts": {
-    "pretest": "./node_modules/.bin/eslint ./__tests__/",
+    "lint-tests": "./node_modules/.bin/eslint ./__tests__/",
+    "pretest": "npm run lint-tests",
     "test": "jest --verbose --coverage",
-    "lint": "./node_modules/.bin/eslint ./src/",
+    "lint-src": "./node_modules/.bin/eslint ./src/",
+    "predev": "npm run lint-src",
     "dev": "nodemon --exec babel-node ./src/server",
     "start": "babel-node ./src/server"
   },
