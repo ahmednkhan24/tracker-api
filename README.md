@@ -17,6 +17,15 @@ TODO:
 * dockerize
 * swagger
 
+https://www.youtube.com/watch?v=KyWaXA_NvT0&t=2815s
+
+
+unit test sites: https://jestjs.io/docs/en/mongodb
+https://medium.com/javascript-in-plain-english/how-i-setup-unit-test-for-mongodb-using-jest-mongoose-103b772ee164
+https://zellwk.com/blog/endpoint-testing/
+https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/
+https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+
 
 /*
  * mongod --dbpath=/Users/data/db
