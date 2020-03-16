@@ -4,9 +4,11 @@
   "description": "Tracker Api",
   "main": "server.js",
   "scripts": {
+    "pretest": "./node_modules/.bin/eslint ./__tests__/",
     "test": "jest --verbose --coverage",
-    "start": "babel-node ./src/server",
-    "dev": "nodemon --exec babel-node ./src/server"
+    "lint": "./node_modules/.bin/eslint ./src/",
+    "dev": "nodemon --exec babel-node ./src/server",
+    "start": "babel-node ./src/server"
   },
   "jest": {
     "testEnvironment": "node",
