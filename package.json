@@ -2,11 +2,11 @@
   "name": "tracker-api",
   "version": "1.0.0",
   "description": "Tracker Api",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "babel-node ./src/app.js",
-    "dev": "nodemon --exec babel-node ./src/app.js"
+    "start": "babel-node ./src/server",
+    "dev": "nodemon --exec babel-node ./src/server"
   },
   "jest": {
     "testEnvironment": "node",
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/ahmednkhan24/Tracker-Api#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -41,6 +42,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "jest": "^25.1.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }

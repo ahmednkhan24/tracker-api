@@ -1,4 +1,7 @@
-export default (app) => {
+import app from './app';
+import connectToDatabase from './database';
+
+const startServer = () => {
   const PORT = process.env.PORT || 3000;
   const IP = process.env.IP || '127.0.0.1';
 
@@ -9,3 +12,6 @@ export default (app) => {
     console.log(`running at http://${address}:${port}`);
   });
 };
+
+connectToDatabase();
+startServer();
