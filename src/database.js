@@ -9,8 +9,8 @@ const mongooseAttr = {
 
 export default async () => {
   try {
-    const { DATABASE_URI, DATABASE_NAME } = process.env;
-    await mongoose.connect(`${DATABASE_URI}/${DATABASE_NAME}`, mongooseAttr);
+    const { DB_URI, DB_NAME } = process.env;
+    await mongoose.connect(`${DB_URI}/${DB_NAME}`, mongooseAttr);
     console.log('Database connection established');
   } catch (error) {
     console.log('Error connecting to the database. Exiting...');
