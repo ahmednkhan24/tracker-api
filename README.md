@@ -3,10 +3,10 @@
 ## How to start development
 clone this repo
 have node and npm installed
-⋅⋅* run the command `npm install`
-⋅⋅* use command `npm test` to run the unit tests for the application
-⋅⋅* use command `npm run dev` to start nodemon dev server for development
-⋅⋅* use command `npm start` to start normal node server for production
+* run the command `npm install`
+* use command `npm test` to run the unit tests for the application
+* use command `npm run dev` to start nodemon dev server for development
+* use command `npm start` to start normal node server for production
 
 run ESLint: `./node_modules/.bin/eslint --init`
 
