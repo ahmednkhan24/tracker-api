@@ -4,7 +4,7 @@
   "description": "Tracker Api",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "start": "babel-node ./src/server",
     "dev": "nodemon --exec babel-node ./src/server"
   },
