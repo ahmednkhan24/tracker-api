@@ -1,13 +1,13 @@
 import express from 'express';
 import sanitizer from 'express-sanitizer';
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
+import dotenvSafe from 'dotenv-safe';
 import cors from 'cors';
 
 import controller from './routes/controller';
 
 // load environment variables
-dotenv.config({ path: '.env' });
+dotenvSafe.config({ path: '.env' });
 
 // init
 const app = express();
