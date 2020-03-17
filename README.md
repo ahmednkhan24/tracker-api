@@ -16,6 +16,7 @@ TODO:
 * CI/CD (github actions???)
 * dockerize
 * swagger
+* authentication/authorization
 
 https://www.youtube.com/watch?v=KyWaXA_NvT0&t=2815s
 
