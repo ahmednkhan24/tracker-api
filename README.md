@@ -11,7 +11,8 @@ have node and npm installed
 run ESLint: `./node_modules/.bin/eslint --init`
 
 TODO:
-* update readme with better explanations and formatting + mongodb
+* update readme with better explanations
+* use mongo cloud instead of local mongodb
 * add unit tests
 * CI/CD (github actions???)
 * dockerize
