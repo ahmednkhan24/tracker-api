@@ -4,19 +4,12 @@
   "description": "Tracker Api",
   "main": "server.js",
   "scripts": {
-    "lint-tests": "./node_modules/.bin/eslint ./__tests__/",
-    "pretest": "npm run lint-tests",
+    "lint": "eslint ./",
+    "pretest": "npm run lint",
     "test": "jest --verbose --coverage",
-    "lint-src": "./node_modules/.bin/eslint ./src/",
-    "predev": "npm run lint-src",
-    "dev": "nodemon --exec babel-node ./src/server",
-    "start": "babel-node ./src/server"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "predev": "npm run lint",
+    "dev": "nodemon --exec babel-node ./src/server.js",
+    "start": "babel-node ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -48,5 +41,36 @@
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": ["/node_modules/", "dist/"]
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["node_modules/", "coverage/", "dist/"],
+    "rules": {
+        "no-console": "off"
+    }
   }
 }
