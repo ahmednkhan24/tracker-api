@@ -1,5 +1,5 @@
 import getErrorMessage from '../responses/errorMessages';
-import { findUser, findAllUsers, createUser } from '../services/service';
+import { findUser, findAllUsers, createUser } from '../services';
 import { isObjectEmpty, missingKeyInObject } from '../utils';
 
 export const getRoot = async (req, res) => res.status(200).json({ hello: 'world' });
