@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import dotenvSafe from 'dotenv-safe';
 import cors from 'cors';
 
-import controller from './routes/controller';
+import routes from './routes';
 
 // load environment variables
 dotenvSafe.config({ path: '.env' });
@@ -26,6 +26,6 @@ app.use(sanitizer());
 app.disable('etag');
 
 // use our defined routes
-app.use(controller);
+app.use(routes);
 
 export default app;
