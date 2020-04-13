@@ -1,9 +1,11 @@
 import express from 'express';
 import User from '../models/user';
 import getErrorMessage from '../responses/errorMessages';
+import getRoot from '../controllers';
 import {
-  getRoot, getUsers, getUser, postUser,
-} from '../controllers';
+  getUsers, getUser, postUser,
+} from '../controllers/user';
+
 
 const router = express.Router();
 
