@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import polyfill from 'babel-polyfill';
 import supertest from 'supertest';
-import app from '../src/app';
+import app from '../src/api';
 
 const request = supertest(app);
 
