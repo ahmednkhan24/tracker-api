@@ -9,7 +9,9 @@
     "test": "jest --verbose --coverage",
     "predev": "npm run lint",
     "dev": "nodemon --exec babel-node ./src/index.js",
-    "start": "babel-node ./src/index.js"
+    "start": "babel-node ./src/index.js",
+    "build": "webpack",
+    "prod": "node ./dist/main.js"
   },
   "repository": {
     "type": "git",
