@@ -10,6 +10,14 @@ have node and npm installed
 
 run ESLint: `./node_modules/.bin/eslint --init`
 
+Docker Commands
+* build locally: `docker build --tag tracker-api:latest .`
+* run locally (detached): `docker run --env-file=.env -d -p 80:5000 tracker-api`
+* run locally (interactive): `docker run --env-file=.env -it -p 80:5000 tracker-api`
+docker run -it --env-file=.env -p 80:5000 tracker-api
+* build locally: `docker-compose build`
+* run locally: `docker-compose up`
+
 TODO:
 * update readme with better explanations
 * use mongo cloud instead of local mongodb

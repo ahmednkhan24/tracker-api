@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  tracker-api:
+    env_file: .env
+    build: .
+    image: tracker-api:latest
+    ports:
+      - 80:5000
