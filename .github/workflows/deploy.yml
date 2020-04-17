@@ -5,13 +5,28 @@ on:
     types: [created]
 
 jobs:
-  Build-Push-Deploy:
+  build:
     runs-on: ubuntu-latest
+  
+    strategy:
+      matrix:
+        node-version: [12.x]
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install NPM Dependencies
+      run: npm ci
+    - name: Execute Unit Tests
+      run: npm test
+      env:
+        CI: true
+    
     - name: Login to Heroku Container Registry
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
