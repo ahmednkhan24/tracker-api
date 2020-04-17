@@ -1,11 +1,11 @@
-name: Build, Push, Deploy Container on Heroku
+name: CI/CD Pipeline
 
 on:
-  push:
-    branches: [ master ]
+  release:
+    types: [created]
 
 jobs:
-  build-Push-Deploy:
+  Build-Push-Deploy:
     runs-on: ubuntu-latest
 
     steps:
