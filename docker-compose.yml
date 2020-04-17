@@ -15,4 +15,3 @@ services:
       - tracker-database
     environment:
       - DB_URI=mongodb://tracker-database/tracker
-    command: npm run dev
