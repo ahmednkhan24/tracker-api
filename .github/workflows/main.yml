@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build Push Deploy:
+  build-Push-Deploy:
     runs-on: ubuntu-latest
 
     steps:
