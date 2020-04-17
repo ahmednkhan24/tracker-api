@@ -1,0 +1,30 @@
+name: Build, Push, Deploy Container on Heroku
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build, push, deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Login to Heroku Container Registry
+      env: 
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:login
+    
+    - name: Build and Push Container to Registry
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      run: heroku container:push -a $HEROKU_APP_NAME web
+    
+    - name: Deploy/Release
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      run: heroku container:release -a $HEROKU_APP_NAME web
