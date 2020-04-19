@@ -13,8 +13,8 @@ run ESLint: `./node_modules/.bin/eslint --init`
 docker build -f FirstDockerfile .
 
 Docker Commands
-* build dev container locally: `docker build --tag tracker-api-dev:latest -f Dockerfile-Dev .`
-* build prod container locally: `docker build --tag tracker-api-prod:latest -f Dockerfile-Prod .`
+* build dev container locally: `docker build --tag tracker-api-dev:latest -f Dockerfile.dev .`
+* build prod container locally: `docker build --tag tracker-api-prod:latest -f Dockerfile.web .`
 * run dev container locally (detached): `docker run --env-file=.env -d -p 80:5000 tracker-api-dev`
 * run prod container locally (detached): `docker run --env-file=.env -d -p 80:5000 tracker-api-prod`
 * run dev container locally (interactive): `docker run --env-file=.env -it -p 80:5000 tracker-api-dev`

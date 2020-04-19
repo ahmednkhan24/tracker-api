@@ -9,7 +9,7 @@ services:
     env_file: .env
     build:
       context: .
-      dockerfile: Dockerfile-Dev
+      dockerfile: Dockerfile.dev
     image: tracker-api-dev:latest
     command: npm start
     ports:
