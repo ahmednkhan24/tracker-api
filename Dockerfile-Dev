@@ -1,0 +1,20 @@
+# base image
+FROM node:12
+
+# set working directory in container
+WORKDIR /tracker-api
+
+# put package.json and package-lock.json into the container
+COPY package*.json /tracker-api/
+
+# install node dependencies - done first for caching benefit
+RUN npm install
+
+# put the source code into the container
+COPY ./src/ /tracker-api/src/
+
+# specify what port on the container the application will connect to
+EXPOSE 5000
+
+# command to run the production build
+CMD ["npm", "start"]

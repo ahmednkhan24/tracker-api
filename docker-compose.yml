@@ -7,11 +7,14 @@ services:
       - 27017:27017
   tracker-api:
     env_file: .env
-    build: .
-    image: tracker-api:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-Dev
+    image: tracker-api-dev:latest
+    command: npm start
     ports:
       - 80:5000
-    depends_on: 
+    depends_on:
       - tracker-database
     environment:
       - DB_URI=mongodb://tracker-database/tracker
