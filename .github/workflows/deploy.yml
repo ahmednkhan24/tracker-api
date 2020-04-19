@@ -1,44 +1,39 @@
-name: CI/CD Pipeline
+name: Deploy Release
 
 on:
   release:
     types: [created]
 
 jobs:
-  build:
+  create-prod-artifact:
     runs-on: ubuntu-latest
-  
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install NPM Dependencies
       run: npm ci
-    - name: Execute Unit Tests
-      run: npm test
-      env:
-        CI: true
-    
+    - name: Create Production Build
+      run: npm run build
+  
+  build-and-deploy-container:
+    runs-on: ubuntu-latest
     - name: Login to Heroku Container Registry
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku container:login
-    
     - name: Build and Push Container to Registry
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       run: heroku container:push -a $HEROKU_APP_NAME web
-    
-    - name: Deploy/Release
+    - name: Deploy Release
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}

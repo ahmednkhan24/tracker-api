@@ -28,7 +28,3 @@ jobs:
       run: npm test
       env:
         CI: true
-  
-    - name: Audit
-      run: npm audit
-    
