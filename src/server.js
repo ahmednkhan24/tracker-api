@@ -4,7 +4,10 @@ export default (api) => {
   const server = api.listen(PORT, () => {
     console.log('API Server has started');
     console.log(`Server running in ${process.env.NODE_ENV} mode`);
-    const { address, port } = server.address();
-    console.log(`running at http://${address}:${port}`);
+
+    const { port } = server.address();
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`running at http://localhost:${port}`);
+    }
   });
 };
