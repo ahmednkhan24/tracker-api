@@ -24,6 +24,7 @@ jobs:
   
   build-and-deploy-container:
     runs-on: ubuntu-latest
+    needs: [create-prod-artifact]
     steps:
     - name: Login to Heroku Container Registry
       env: 
