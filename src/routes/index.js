@@ -1,13 +1,25 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 import User from '../models/user';
 import getErrorMessage from '../responses/errorMessages';
 import getRoot from '../controllers';
 import {
   getUsers, getUser, postUser,
 } from '../controllers/user';
-
+import swaggerLocalDoc from '../swagger/swaggerLocal.json';
+// import swaggerWebDoc from '../../swaggerWeb.json';
 
 const router = express.Router();
+
+// swagger for API visualization/interaction
+router.use('/api-docs', swaggerUi.serve);
+router.get('/api-docs', swaggerUi.setup(swaggerLocalDoc));
+
+// if (process.env.NODE_ENV !== 'production') {
+//   api.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerLocalDoc));
+// } else {
+//   api.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerWebDoc));
+// }
 
 router
   .route('/')
