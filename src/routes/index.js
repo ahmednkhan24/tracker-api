@@ -12,8 +12,12 @@ import swaggerLocalDoc from '../swagger/swaggerLocal.json';
 const router = express.Router();
 
 // swagger for API visualization/interaction
-router.use('/api-docs', swaggerUi.serve);
-router.get('/api-docs', swaggerUi.setup(swaggerLocalDoc));
+router.use(
+  '/api-docs',
+  express.static('node_modules/swagger-ui-dist/', { index: false }),
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerLocalDoc),
+);
 
 // if (process.env.NODE_ENV !== 'production') {
 //   api.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerLocalDoc));
