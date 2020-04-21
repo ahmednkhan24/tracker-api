@@ -10,6 +10,8 @@ COPY package*.json /tracker-api/
 # install production node dependencies - done first for caching benefit
 RUN npm install --production
 
+COPY swagger*.json /tracker-api/
+
 # put the prod build into the container within /tracker-api/dist/ directory
 COPY ./dist/ /tracker-api/dist/
 
