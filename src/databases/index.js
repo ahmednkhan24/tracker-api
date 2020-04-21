@@ -7,10 +7,9 @@ const mongooseAttr = {
   useUnifiedTopology: true,
 };
 
-const { DB_URI } = process.env;
-
 export default async () => {
   try {
+    const { DB_URI } = process.env;
     await mongoose.connect(DB_URI, mongooseAttr);
     console.log('Database connection established');
   } catch (error) {
