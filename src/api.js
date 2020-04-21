@@ -1,8 +1,6 @@
 import express from 'express';
 import sanitizer from 'express-sanitizer';
 import bodyParser from 'body-parser';
-import cors from 'cors';
-
 import routes from './routes';
 
 // init
@@ -11,9 +9,6 @@ const api = express();
 // Configuring body parser middleware, allows us to use form data and send responses as json
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(bodyParser.json());
-
-// cross-origin resource sharing
-api.use(cors());
 
 // sanitize form data to prevent malware
 api.use(sanitizer());
