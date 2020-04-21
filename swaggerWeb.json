@@ -1,0 +1,117 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Tracker API",
+    "description": "Node API"
+  },
+  "host": "obscure-temple-44468.herokuapp.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Root",
+      "description": "Root Route"
+    },
+    {
+      "name": "Users",
+      "description": "Data relevant to all users"
+    },
+    {
+      "name": "User",
+      "description": "Data relevant to a specific users"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Root"
+        ],
+        "summary": "Get a Hello World message",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all user data in the system",
+        "responses": {
+          "200": {
+            "description": "Array of all user data in the system"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get specifc user in the system",
+        "summary": "Get specifc user in the system",
+        "responses": {
+          "200": {
+            "description": "Specific user in the system"
+          },
+          "400": {
+            "description": "Missing required field"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "emailAddress",
+            "type": "string",
+            "required": true,
+            "description": "email address of user to find"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": [
+        "_id",
+        "emailAddress",
+        "firstName",
+        "lastName"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "emailAddress": {
+          "type": "string",
+          "uniqueItems": true,
+          "required": true
+        },
+        "lastName": {
+          "type": "string",
+          "required": true
+        },
+        "firstName": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  }
+}
