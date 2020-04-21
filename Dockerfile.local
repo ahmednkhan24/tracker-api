@@ -10,6 +10,8 @@ COPY package*.json /tracker-api/
 # install node dependencies - done first for caching benefit
 RUN npm install
 
+COPY swagger*.json /tracker-api/
+
 # put the source code into the container
 COPY ./src/ /tracker-api/src/
 
