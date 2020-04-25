@@ -81,6 +81,41 @@
             "description": "email address of user to find"
           }
         ]
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Insert new user in the system",
+        "summary": "Insert new user in the system",
+        "responses": {
+          "200": {
+            "description": "Inserted user in the system"
+          },
+          "400": {
+            "description": "Missing required field"
+          },
+          "403": {
+            "description": "user with that email already exists"
+          },
+          "404": {
+            "description": "Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "payload",
+            "in": "body",
+            "description": "Data to create",
+            "example": {
+              "payload": {
+                "firstName": "Ahmed",
+                "lastName": "Khan",
+                "emailAddress": "ahmednkhan24@gmail.com"
+              }
+            }
+          }
+        ]
       }
     }
   },
