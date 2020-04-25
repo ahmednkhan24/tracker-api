@@ -20,12 +20,13 @@ export const getUser = async (req, res) => {
 };
 
 export const postUser = async (req, res) => {
-  if (isObjectEmpty(req.body) || missingKeyInObject(req.body, ['firstName', 'lastName', 'emailAddress'])) {
+  const { payload } = req.body;
+  if (isObjectEmpty(payload) || missingKeyInObject(payload, ['firstName', 'lastName', 'emailAddress'])) {
     return res.status(400).json(getErrorMessage(400));
   }
-  const firstName = req.sanitize(req.body.firstName);
-  const lastName = req.sanitize(req.body.lastName);
-  const emailAddress = req.sanitize(req.body.emailAddress);
+  const firstName = req.sanitize(payload.firstName);
+  const lastName = req.sanitize(payload.lastName);
+  const emailAddress = req.sanitize(payload.emailAddress);
   const user = await createUser({ firstName, lastName, emailAddress });
   return res.status(user.errorCode ? user.status : 200).json(user);
 };
