@@ -8,10 +8,6 @@ module.exports = {
     filename: 'main.js',
   },
   plugins: [
-    /*
-     * Copy static asset files so that they can be served from output directory since
-     * swagger-ui-dist does not work with webpack.
-     */
     new CopyPlugin([
       {
         from: path.resolve(__dirname, 'node_modules/swagger-ui-dist/'),
