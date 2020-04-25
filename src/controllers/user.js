@@ -11,22 +11,22 @@ export const getUsers = async (req, res) => {
 };
 
 export const getUser = async (req, res) => {
-  if (isObjectEmpty(req.query) || missingKeyInObject(req.query, ['emailAddress'])) {
+  if (isObjectEmpty(req.query) || missingKeyInObject(req.query, ['email'])) {
     return res.status(400).json(getErrorMessage(400));
   }
-  const emailAddress = req.sanitize(req.query.emailAddress);
+  const emailAddress = req.sanitize(req.query.email);
   const user = await findUser(emailAddress);
   return res.status(200).json(user);
 };
 
 export const postUser = async (req, res) => {
   const { payload } = req.body;
-  if (isObjectEmpty(payload) || missingKeyInObject(payload, ['firstName', 'lastName', 'emailAddress'])) {
+  if (isObjectEmpty(payload) || missingKeyInObject(payload, ['first', 'last', 'email'])) {
     return res.status(400).json(getErrorMessage(400));
   }
-  const firstName = req.sanitize(payload.firstName);
-  const lastName = req.sanitize(payload.lastName);
-  const emailAddress = req.sanitize(payload.emailAddress);
+  const firstName = req.sanitize(payload.first);
+  const lastName = req.sanitize(payload.last);
+  const emailAddress = req.sanitize(payload.email);
   const user = await createUser({ firstName, lastName, emailAddress });
   return res.status(user.errorCode ? user.status : 200).json(user);
 };

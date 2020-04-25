@@ -75,7 +75,7 @@
         "parameters": [
           {
             "in": "query",
-            "name": "emailAddress",
+            "name": "email",
             "type": "string",
             "required": true,
             "description": "email address of user to find"
@@ -109,9 +109,9 @@
             "description": "Data to create",
             "example": {
               "payload": {
-                "firstName": "Ahmed",
-                "lastName": "Khan",
-                "emailAddress": "ahmednkhan24@gmail.com"
+                "first": "Ahmed",
+                "last": "Khan",
+                "email": "ahmednkhan24@gmail.com"
               }
             }
           }
