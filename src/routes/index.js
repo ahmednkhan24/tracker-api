@@ -1,6 +1,6 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
-import User from '../models/user';
+// import User from '../models/user';
 import getErrorMessage from '../responses/errorMessages';
 import getRoot from '../controllers';
 import {
@@ -35,16 +35,17 @@ router
   .get(getUser)
   .post(postUser);
 
+// TODO: move logic to controller
 // find a user by first name
-router.get('/user/:id', (req, res) => {
-  User.find({ firstName: req.params.id }, (err, data) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log(data);
-    res.json({ foundUser: data });
-  });
-});
+// router.get('/user/:id', (req, res) => {
+//   User.find({ firstName: req.params.id }, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log(data);
+//     res.json({ foundUser: data });
+//   });
+// });
 
 router.get('*', (req, res) => res.json(getErrorMessage(404)));
 
