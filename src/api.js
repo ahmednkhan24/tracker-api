@@ -16,8 +16,6 @@ api.use(sanitizer());
 // remove etag's in order to manually configure HTTP response codes
 api.disable('etag');
 
-api.use(express.static('files'));
-
 // use our defined routes
 api.use(routes);
 
