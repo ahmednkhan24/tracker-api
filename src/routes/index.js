@@ -46,8 +46,6 @@ router.get('/user/:id', (req, res) => {
   });
 });
 
-router.get('*', (req, res) => {
-  res.json(getErrorMessage(404));
-});
+router.get('*', (req, res) => res.json(getErrorMessage(404)));
 
 export default router;
