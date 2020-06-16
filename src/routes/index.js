@@ -7,23 +7,20 @@ import {
   getUsers, getUser, postUser,
 } from '../controllers/user';
 import swaggerLocalDoc from '../swagger/swaggerLocal.json';
-// import swaggerWebDoc from '../../swaggerWeb.json';
+import swaggerWebDoc from '../swagger/swaggerWeb.json';
 
 const router = express.Router();
 
-// swagger for API visualization/interaction
-router.use(
-  '/api-docs',
-  express.static('node_modules/swagger-ui-dist/', { index: false }),
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerLocalDoc),
-);
-
-// if (process.env.NODE_ENV !== 'production') {
-//   api.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerLocalDoc));
-// } else {
-//   api.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerWebDoc));
-// }
+if (process.env.NODE_ENV === 'production') {
+  router.use(
+    '/api-docs',
+    express.static('node_modules/swagger-ui-dist/', { index: false }),
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerWebDoc),
+  );
+} else {
+  router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerLocalDoc));
+}
 
 router
   .route('/')
